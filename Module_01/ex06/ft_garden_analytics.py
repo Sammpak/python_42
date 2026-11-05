@@ -6,7 +6,7 @@
 #  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/11/04 12:43:22 by spaccaud        #+#    #+#               #
-#  Updated: 2026/11/04 14:50:09 by spaccaud        ###   ########.fr        #
+#  Updated: 2026/11/05 15:45:05 by spaccaud        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -31,7 +31,8 @@ class Plant:
             self.produce_shade_count += 1
 
         def show_statistic(self):
-            print(f"Stats: {self.grow_count} grow, {self.age_count} age, {self.show_count} show")
+            print(f"Stats: {self.grow_count} grow,")
+            print(f"{self.age_count} age, {self.show_count} show")
             if self.produce_shade_count >= 1:
                 print(f"{self.produce_shade_count} shade")
 
@@ -91,7 +92,8 @@ class Seed:
         self.color = color
 
     def show(self):
-        print(f"Seed from {self.parent_name} ({self.color}): {self.number_of_seeds} items packaged.")
+        print(f"Seed from {self.parent_name} ({self.color}):")
+        print(f"{self.number_of_seeds} items packaged.")
 
 
 class Flower(Plant):
@@ -112,12 +114,11 @@ class Flower(Plant):
             print(f" {self.name} is blooming beautifully!")
         else:
             print(f" {self.name} has not bloomed yet")
-        
-        # Safely checks if seeds exists before accessing number_of_seeds
+
         if self.seeds:
             print(f"Seeds : {self.seeds.number_of_seeds}")
         else:
-            print(f"Seeds : 0")
+            print("Seeds : 0")
 
 
 class Tree(Plant):
@@ -139,7 +140,7 @@ if __name__ == "__main__":
     rose = Plant("rose", 10, 2)
     rose_2 = Plant("rose", 4000, 2)
     print(f"is {rose.age} more than a year? -> {rose.check_age(rose.age)}")
-    print(f"is {rose_2.age} more than a year? -> {rose_2.check_age(rose_2.age)}")
+    print(f"is {rose_2.age} more than a year?->{rose_2.check_age(rose_2.age)}")
 
     print(" ")
 
