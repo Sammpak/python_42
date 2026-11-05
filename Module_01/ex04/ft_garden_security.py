@@ -1,14 +1,14 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_garden_security.py                              :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: sampak <sampak@student.42.fr>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/11/02 17:42:09 by spaccaud          #+#    #+#              #
-#    Updated: 2026/11/03 11:16:40 by sampak           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+# ************************************************************************* #
+#                                                                           #
+#                                                      :::      ::::::::    #
+#  ft_garden_security.py                             :+:      :+:    :+:    #
+#                                                  +:+ +:+         +:+      #
+#  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
+#                                              +#+#+#+#+#+   +#+            #
+#  Created: 2026/11/05 11:57:06 by spaccaud        #+#    #+#               #
+#  Updated: 2026/11/05 11:57:40 by spaccaud        ###   ########.fr        #
+#                                                                           #
+# ************************************************************************* #
 
 class Plant:
     def __init__(self, name):
@@ -16,30 +16,30 @@ class Plant:
         self.age = 0
         self.height = 0
 
-    
     def set_height(self, height):
-        if(height < 0):
+        if (height < 0):
             print(f" {self.name} Error, height can't be negative")
             print("Height update rejected")
         else:
             self.height = height
 
     def set_age(self, age):
-        if(age < 0):
+        if (age < 0):
             print(f" {self.name} Error, age can't be negative")
             print("Age update rejected")
         else:
             self.age = age
-    
+
     def get_height(self):
         return self.height
-    
+
     def get_age(self):
         return self.age
-    
+
 
 def show(plant):
     print(f"Created: {plant.name}: {plant.height}cm, {plant.age} days old")
+
 
 if __name__ == "__main__":
     print("=== Garden Security Output ===")

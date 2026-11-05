@@ -1,14 +1,14 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_plant_growth.py                                 :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: sampak <sampak@student.42.fr>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/11/02 17:42:09 by spaccaud          #+#    #+#              #
-#    Updated: 2026/11/03 10:28:12 by sampak           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+# ************************************************************************* #
+#                                                                           #
+#                                                      :::      ::::::::    #
+#  ft_plant_growth.py                                :+:      :+:    :+:    #
+#                                                  +:+ +:+         +:+      #
+#  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
+#                                              +#+#+#+#+#+   +#+            #
+#  Created: 2026/11/05 11:56:24 by spaccaud        #+#    #+#               #
+#  Updated: 2026/11/05 11:56:38 by spaccaud        ###   ########.fr        #
+#                                                                           #
+# ************************************************************************* #
 
 class Plant:
     def __init__(self, name, height, age, growth_rate):
@@ -17,14 +17,18 @@ class Plant:
         self.height = height
         self.growth_rate = growth_rate
 
+
 def show(plant):
     print(f"{plant.name}: {plant.height}cm, {plant.age} days old")
 
+
 def grow(plant):
     plant.height = round(plant.height + plant.growth_rate, 1)
-    
+
+
 def age(plant):
     plant.age += 1
+
 
 if __name__ == "__main__":
     print("=== Garden Plant Registry ===")

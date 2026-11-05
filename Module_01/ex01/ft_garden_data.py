@@ -1,14 +1,14 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_garden_data.py                                  :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: sampak <sampak@student.42.fr>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/11/02 17:42:09 by spaccaud          #+#    #+#              #
-#    Updated: 2026/11/03 10:19:19 by sampak           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+# ************************************************************************* #
+#                                                                           #
+#                                                      :::      ::::::::    #
+#  ft_garden_data.py                                 :+:      :+:    :+:    #
+#                                                  +:+ +:+         +:+      #
+#  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
+#                                              +#+#+#+#+#+   +#+            #
+#  Created: 2026/11/05 11:56:03 by spaccaud        #+#    #+#               #
+#  Updated: 2026/11/05 11:56:14 by spaccaud        ###   ########.fr        #
+#                                                                           #
+# ************************************************************************* #
 
 class Plant:
     def __init__(self, name, height, age):
@@ -16,8 +16,10 @@ class Plant:
         self.age = age
         self.height = height
 
+
 def show(plant):
     print(f"{plant.name}: {plant.height}cm, {plant.age} days old")
+
 
 if __name__ == "__main__":
     print("=== Garden Plant Registry ===")
