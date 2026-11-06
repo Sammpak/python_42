@@ -6,59 +6,67 @@
 #  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/11/04 12:43:22 by spaccaud        #+#    #+#               #
-#  Updated: 2026/11/05 15:45:05 by spaccaud        ###   ########.fr        #
+#  Updated: 2026/11/06 13:01:36 by spaccaud        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
+from typing import Optional
+
+
 class Plant:
     class statistic:
-        def __init__(self):
-            self.grow_count = 0
-            self.age_count = 0
-            self.show_count = 0
-            self.produce_shade_count = 0
+        def __init__(self) -> None:
+            self.grow_count: int = 0
+            self.age_count: int = 0
+            self.show_count: int = 0
+            self.produce_shade_count: int = 0
 
-        def increment_grow(self):
+        def increment_grow(self) -> None:
             self.grow_count += 1
 
-        def increment_age(self):
+        def increment_age(self) -> None:
             self.age_count += 1
 
-        def increment_show(self):
+        def increment_show(self) -> None:
             self.show_count += 1
 
-        def increment_shade(self):
+        def increment_shade(self) -> None:
             self.produce_shade_count += 1
 
-        def show_statistic(self):
+        def show_statistic(self) -> None:
             print(f"Stats: {self.grow_count} grow,")
             print(f"{self.age_count} age, {self.show_count} show")
             if self.produce_shade_count >= 1:
                 print(f"{self.produce_shade_count} shade")
 
-    def __init__(self, name, age, height):
-        self.name = name
-        self.age = age
-        self.height = height
-        self.stats = self.statistic()
+    def __init__(self, name: str, age: int, height: int) -> None:
+        self.name: str = name
+        self.age: int = age
+        self.height: int = height
+        self.stats: Plant.statistic = self.statistic()
 
-    def _grow(self):
+    def _grow(self) -> None:
         self.stats.increment_grow()
 
-    def _age(self):
+    def _age(self) -> None:
         self.stats.increment_age()
 
-    def _show(self):
+    def _show(self) -> None:
         print(f"{self.name}: {self.height}cm, {self.age} days old")
         self.stats.increment_show()
 
     @staticmethod
-    def check_age(age_in_day):
+    def check_age(age_in_day: int) -> bool:
         return age_in_day > 365
 
 
 class Anonymous(Plant):
-    def __init__(self, name=None, age=None, height=None):
+    def __init__(
+        self,
+        name: Optional[str] = None,
+        age: Optional[int] = None,
+        height: Optional[int] = None
+    ) -> None:
         super().__init__(
             name or "Unknown plant",
             age or 0,
@@ -67,49 +75,51 @@ class Anonymous(Plant):
 
 
 class Vegetable(Plant):
-    def __init__(self, harvest_season, name, age, height):
+    def __init__(self, harvest_season: str, name: str, age: int,
+                 /, height: int) -> None:
         super().__init__(name, age, height)
-        self.harvest_season = harvest_season
-        self.nutritional_value = 0
+        self.harvest_season: str = harvest_season
+        self.nutritional_value: int = 0
 
-    def grow(self):
+    def grow(self) -> None:
         self.nutritional_value += 1
         self._grow()
 
-    def age_plant(self):
+    def age_plant(self) -> None:
         self.age += 1
         self.nutritional_value += 1
         self._age()
 
-    def show(self):
+    def show(self) -> None:
         self._show()
 
 
 class Seed:
-    def __init__(self, number_of_seeds, parent_name, color):
-        self.number_of_seeds = number_of_seeds
-        self.parent_name = parent_name
-        self.color = color
+    def __init__(self, number_of_seeds: int, parent_name: str,
+                 /, color: str) -> None:
+        self.number_of_seeds: int = number_of_seeds
+        self.parent_name: str = parent_name
+        self.color: str = color
 
-    def show(self):
+    def show(self) -> None:
         print(f"Seed from {self.parent_name} ({self.color}):")
         print(f"{self.number_of_seeds} items packaged.")
 
 
 class Flower(Plant):
-    def __init__(self, name, color, age, height):
+    def __init__(self, name: str, color: str, age: int, height: int) -> None:
         super().__init__(name, age, height)
-        self.color = color
-        self.is_blooming = False
-        self.seeds = None
+        self.color: str = color
+        self.is_blooming: bool = False
+        self.seeds: Optional[Seed] = None
 
-    def bloom(self, seed_count):
+    def bloom(self, seed_count: int) -> None:
         self.is_blooming = True
         self.seeds = Seed(seed_count, self.name, self.color)
 
-    def show(self):
+    def show(self) -> None:
         self._show()
-        print(f" Color: {self.color}")            
+        print(f" Color: {self.color}")         
         if self.is_blooming:
             print(f" {self.name} is blooming beautifully!")
         else:
@@ -122,14 +132,15 @@ class Flower(Plant):
 
 
 class Tree(Plant):
-    def __init__(self, name, trunk_diameter, age, height):
+    def __init__(self, name: str, trunk_diameter: int, age: int,
+                 /, height: int) -> None:
         super().__init__(name, age, height)
-        self.trunk_diameter = trunk_diameter
+        self.trunk_diameter: int = trunk_diameter
 
-    def produce_shape(self):
+    def produce_shape(self) -> None:
         self.stats.increment_shade()
 
-    def show(self):
+    def show(self) -> None:
         self._show()
         print(f"Trunk diameter: {self.trunk_diameter}")
 
@@ -139,7 +150,7 @@ if __name__ == "__main__":
     print("check year-old")
     rose = Plant("rose", 10, 2)
     rose_2 = Plant("rose", 4000, 2)
-    print(f"is {rose.age} more than a year? -> {rose.check_age(rose.age)}")
+    print(f"is {rose.age} more than a year? ->{rose.check_age(rose.age)}")
     print(f"is {rose_2.age} more than a year?->{rose_2.check_age(rose_2.age)}")
 
     print(" ")
