@@ -29,20 +29,17 @@ class Plant:
 
 
 if __name__ == "__main__":
-    print("=== Garden Plant Registry ===")
-
-    rose = Plant("Rose", 25, 30, 0.8)
-    sunflower = Plant("Sunflower", 80, 45, 1.2)
-    cactus = Plant("Cactus", 15, 120, 0.5)
-
-    for i in range(7):
-        print(f"==== Day {i + 1} ====")
+    print("=== Garden Plant Growth ===")
+ 
+    rose = Plant("Rose", 25.0, 30, 0.8)
+    start_height = rose.get_height()
+    rose.show()
+ 
+    for day in range(1, 8):
+        print(f"=== Day {day} ===")
         rose.grow()
-        rose.show()
         rose.age()
-        sunflower.grow()
-        sunflower.show()
-        sunflower.age()
-        cactus.grow()
-        cactus.show()
-        cactus.age()
+        rose.show()
+ 
+    growth = round(rose.get_height() - start_height, 1)
+    print(f"Growth this week: {growth}cm")
