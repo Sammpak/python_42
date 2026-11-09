@@ -6,7 +6,7 @@
 #  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/11/05 11:56:03 by spaccaud        #+#    #+#               #
-#  Updated: 2026/11/06 10:44:03 by spaccaud        ###   ########.fr        #
+#  Updated: 2026/11/09 16:13:54 by spaccaud        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -16,9 +16,8 @@ class Plant:
         self.age = age
         self.height = height
 
-
-def show(plant) -> None:
-    print(f"{plant.name}: {plant.height}cm, {plant.age} days old")
+    def show(self) -> None:
+        print(f"{self.name}: {self.height}cm, {self.age} days old")
 
 
 if __name__ == "__main__":
@@ -28,6 +27,6 @@ if __name__ == "__main__":
     sunflower = Plant("Sunflower", 80, 45)
     cactus = Plant("Cactus", 15, 120)
 
-    show(rose)
-    show(sunflower)
-    show(cactus)
+    rose.show()
+    sunflower.show()
+    cactus.show()
