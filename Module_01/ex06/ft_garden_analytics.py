@@ -6,12 +6,9 @@
 #  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/11/04 12:43:22 by spaccaud        #+#    #+#               #
-#  Updated: 2026/11/06 13:01:36 by spaccaud        ###   ########.fr        #
+#  Updated: 2026/11/09 14:59:32 by spaccaud        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
-
-from typing import Optional
-
 
 class Plant:
     class statistic:
@@ -34,8 +31,8 @@ class Plant:
             self.produce_shade_count += 1
 
         def show_statistic(self) -> None:
-            print(f"Stats: {self.grow_count} grow,")
-            print(f"{self.age_count} age, {self.show_count} show")
+            print(f"Stats: {self.grow_count} grow, "
+                  f"{self.age_count} age, {self.show_count} show")
             if self.produce_shade_count >= 1:
                 print(f"{self.produce_shade_count} shade")
 
@@ -49,6 +46,7 @@ class Plant:
         self.stats.increment_grow()
 
     def _age(self) -> None:
+        self.age += 1
         self.stats.increment_age()
 
     def _show(self) -> None:
@@ -63,14 +61,14 @@ class Plant:
 class Anonymous(Plant):
     def __init__(
         self,
-        name: Optional[str] = None,
-        age: Optional[int] = None,
-        height: Optional[int] = None
+        name: str = "unknwon",
+        age: int = 0,
+        height: int = 0
     ) -> None:
         super().__init__(
-            name or "Unknown plant",
-            age or 0,
-            height or 0
+            name,
+            age,
+            height
         )
 
 
@@ -85,13 +83,14 @@ class Vegetable(Plant):
         self.nutritional_value += 1
         self._grow()
 
-    def age_plant(self) -> None:
-        self.age += 1
+    def age_vege(self) -> None:
         self.nutritional_value += 1
         self._age()
 
     def show(self) -> None:
         self._show()
+        print(f" Harvest Season: {self.harvest_season}")
+        print(f" Nutritional Value: {self.nutritional_value}")
 
 
 class Seed:
@@ -111,7 +110,7 @@ class Flower(Plant):
         super().__init__(name, age, height)
         self.color: str = color
         self.is_blooming: bool = False
-        self.seeds: Optional[Seed] = None
+        self.seeds: Seed | None = None
 
     def bloom(self, seed_count: int) -> None:
         self.is_blooming = True
@@ -119,7 +118,7 @@ class Flower(Plant):
 
     def show(self) -> None:
         self._show()
-        print(f" Color: {self.color}")         
+        print(f" Color: {self.color}")
         if self.is_blooming:
             print(f" {self.name} is blooming beautifully!")
         else:
@@ -127,8 +126,6 @@ class Flower(Plant):
 
         if self.seeds:
             print(f"Seeds : {self.seeds.number_of_seeds}")
-        else:
-            print("Seeds : 0")
 
 
 class Tree(Plant):
@@ -137,7 +134,7 @@ class Tree(Plant):
         super().__init__(name, age, height)
         self.trunk_diameter: int = trunk_diameter
 
-    def produce_shape(self) -> None:
+    def produce_shade(self) -> None:
         self.stats.increment_shade()
 
     def show(self) -> None:
@@ -175,7 +172,7 @@ if __name__ == "__main__":
     print("[Statistic for Oak]")
     new_tree.stats.show_statistic()
     print("[asking the oak to shade]")
-    new_tree.produce_shape()
+    new_tree.produce_shade()
     new_tree.stats.show_statistic()
 
     print(" ")
@@ -198,3 +195,15 @@ if __name__ == "__main__":
     new_anonymous._show()
     print("[Statistic for Anonymous]")
     new_anonymous.stats.show_statistic()
+
+    print(" ")
+
+    print("=== Vegetable ===")
+    carrot = Vegetable("Winter", "Carrot", 20, 12)
+    carrot.show()
+    print("[asking the carrot to grow and age]")
+    carrot._grow()
+    carrot.age_vege()
+    carrot.show()
+    print("[Statistic for Carrot]")
+    carrot.stats.show_statistic()

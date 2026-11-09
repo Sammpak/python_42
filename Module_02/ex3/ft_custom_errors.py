@@ -6,7 +6,7 @@
 #  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/11/09 11:53:34 by spaccaud        #+#    #+#               #
-#  Updated: 2026/11/09 13:11:57 by spaccaud        ###   ########.fr        #
+#  Updated: 2026/11/09 15:02:37 by spaccaud        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -26,8 +26,7 @@ class WaterError(GardenError):
         super().__init__(message)
 
 
-if __name__ == "__main__":
-    print("=== Custom Garden Errors Demo ===")
+def main() -> None:
     print("Testing PlantError...")
     try:
         raise PlantError("Caught PlantError: The tomato plant is wilting!")
@@ -45,3 +44,8 @@ if __name__ == "__main__":
         raise GardenError()
     except GardenError as e:
         print(f"{e}")
+
+
+if __name__ == "__main__":
+    print("=== Custom Garden Errors Demo ===")
+    main()
