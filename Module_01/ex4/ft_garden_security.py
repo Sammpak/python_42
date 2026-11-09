@@ -11,34 +11,45 @@
 # ************************************************************************* #
 
 class Plant:
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str, height: float, age: int,
+                 growth_rate: float = 1.0) -> None:
         self._name = name
+        self._height = 0.0
         self._age = 0
-        self._height = 0
-
-    def set_height(self, height: int):
-        if (height < 0):
-            print(f" {self._name} Error, height can't be negative")
+        self._growth_rate = growth_rate
+        self.set_height(height)
+        self.set_age(age)
+ 
+    def get_name(self) -> str:
+        return self._name
+ 
+    def get_height(self) -> float:
+        return self._height
+ 
+    def get_age(self) -> int:
+        return self._age
+ 
+    def set_height(self, height: float) -> None:
+        if height < 0:
+            print(f"{self._name}: Error, height can't be negative")
             print("Height update rejected")
         else:
-            self._height = height
-            print(f"Heiht updated: {self.get_height()} cm")
-
-    def set_age(self, age: int):
-        if (age < 0):
-            print(f" {self._name} Error, age can't be negative")
+            self._height = float(height)
+ 
+    def set_age(self, age: int) -> None:
+        if age < 0:
+            print(f"{self._name}: Error, age can't be negative")
             print("Age update rejected")
         else:
             self._age = age
-            print(f"Age updated: {self.get_age()} days")
-
-    def get_height(self) -> int:
-        return self._height
-
-    def get_age(self) -> int:
-        return self._age
-
-    def show(self):
+ 
+    def grow(self) -> None:
+        self._height = round(self._height + self._growth_rate, 1)
+ 
+    def age(self) -> None:
+        self._age += 1
+ 
+    def show(self) -> None:
         print(f"{self._name}: {self._height}cm, {self._age} days old")
 
 
