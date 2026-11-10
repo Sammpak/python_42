@@ -6,7 +6,7 @@
 #  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/11/09 09:59:03 by spaccaud        #+#    #+#               #
-#  Updated: 2026/11/09 10:43:11 by spaccaud        ###   ########.fr        #
+#  Updated: 2026/11/10 15:28:10 by spaccaud        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -31,3 +31,4 @@ if __name__ == "__main__":
     if (test_temperature(nbr_input)):
         res = input_temperature(nbr_input)
         print(f"Temperature is now {nbr_input}")
+    print("All tests completed - program didn't crash!")
