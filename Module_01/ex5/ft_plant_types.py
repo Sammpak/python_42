@@ -6,7 +6,7 @@
 #  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/11/05 11:57:47 by spaccaud        #+#    #+#               #
-#  Updated: 2026/11/09 14:59:43 by spaccaud        ###   ########.fr        #
+#  Updated: 2026/11/10 12:18:23 by spaccaud        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -14,8 +14,8 @@ class Plant:
     def __init__(self, name: str, height: float, age: int,
                  growth_rate: float = 1.0) -> None:
         self._name = name
-        self._height = 0.0
-        self._age = 0
+        self._height = height
+        self._age = age
         self._growth_rate = growth_rate
         self.set_height(height)
         self.set_age(age)
@@ -89,7 +89,7 @@ class Tree(Plant):
 
 class Vegetable(Plant):
     def __init__(self, name: str, height: float, age: int,
-                 harvest_season: str, growth_rate: float = 1.0) -> None:
+                 harvest_season: str, growth_rate: float) -> None:
         super().__init__(name, height, age, growth_rate)
         self._harvest_season = harvest_season
         self._nutritional_value = 0

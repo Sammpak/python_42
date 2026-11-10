@@ -6,12 +6,12 @@
 #  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/11/05 11:56:55 by spaccaud        #+#    #+#               #
-#  Updated: 2026/11/09 16:22:49 by spaccaud        ###   ########.fr        #
+#  Updated: 2026/11/10 15:17:11 by spaccaud        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
 class Plant:
-    def __init__(self, name: str, height: int, age: int,
+    def __init__(self, name: str, height: float, age: int,
                  /, growth_rate: float) -> None:
         self._name = name
         self._age = age
