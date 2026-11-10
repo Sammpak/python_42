@@ -152,6 +152,9 @@ class Tree(Plant):
         print(f"Tree {self._name} now produces a shade of {self._height}"
               f"cm long and {self._trunk_diameter}cm wide.")
 
+def display_stats(plant: Plant) -> None:
+    plant.display_stats()
+
 
 if __name__ == "__main__":
     print("=== Garden statistics ===")
