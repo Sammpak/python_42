@@ -19,7 +19,7 @@ class Plant:
         self._growth_rate = growth_rate
 
     def show(self) -> None:
-        print(f"Created: {self._name}: {self._height}cm, {self._age} days old")
+        print(f"{self._name}: {self._height}cm, {self._age} days old")
 
     def grow(self) -> None:
         self._height = round(self._height + self._growth_rate, 1)
