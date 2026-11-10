@@ -155,7 +155,7 @@ class Tree(Plant):
 
 if __name__ == "__main__":
     print("=== Garden statistics ===")
-
+ 
     rose_age = Flower("Rose", 15.0, 10, "red", 8.0)
     print("=== Check year-old")
     print(f"Is {rose_age.get_age()} days more than a year? ->"
@@ -164,43 +164,44 @@ if __name__ == "__main__":
     print(f"Is {rose_age.get_age()} days more than a year? ->"
           f" {rose_age.is_older_than_year(rose_age.get_age())}")
     print("")
-
+ 
     print("=== Flower")
     rose = Flower("Rose", 15.0, 10, "red")
     rose.show()
     print("[statistics for Rose]")
-    rose._stats.display()
+    display_stats(rose)
     print("[asking the rose to grow and bloom]")
     rose.grow()
     rose.bloom()
     rose.show()
     print("[statistics for Rose]")
-    rose._stats.display()
+    display_stats(rose)
     print("")
-
+ 
     print("=== Tree")
     oak = Tree("oak", 200.0, 265, 12)
     oak.show()
     print("[statistics for oak]")
-    oak._stats.display_tree()
+    display_stats(oak)
     print("[asking the oak to produce shade]")
     oak.produce_shade()
     print("[statistics for oak]")
-    oak._stats.display_tree()
+    display_stats(oak)
     print("")
-
+ 
     print("=== Seed")
-    sunflower = Seed("sunflower", 80.0, 45, "yellow", 0, 42)
+    sunflower = Seed("sunflower", 80.0, 45, "yellow", 42)
     sunflower.show()
     print("[make sunflower grow, age and bloom]")
     sunflower.grow()
     sunflower.age()
     sunflower.bloom()
     sunflower.show()
-    print("[statistics for oak]")
-    sunflower._stats.display()
+    print("[statistics for sunflower]")
+    display_stats(sunflower)
     print("")
-
+ 
     print("=== Anonymous")
     anonymous = Plant.anonymous()
     anonymous.show()
+    print("[statistics for Anonymous]")
