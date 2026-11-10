@@ -29,22 +29,17 @@ class Plant:
 
 
 if __name__ == "__main__":
-    print("=== Garden Security System ===")
-    rose = Plant("Rose", 15.0, 10)
-    print("Plant created: ", end="")
+    rose = Plant("Rose", 25.0, 30, 0.8)
+    oak = Plant("Oak", 200.0, 365, 0.1)
+    cactus = Plant("Cactus", 5.0, 90, 0.5)
+    sunflower = Plant("Sunflower", 80.0, 45, 1.2)
+ 
+    print("=== Plant Factory Output ===")
+    print("Created: ", end="")
     rose.show()
-    print()
- 
-    rose.set_height(25)
-    print(f"Height updated: {rose.get_height()}cm")
-    rose.set_age(30)
-    print(f"Age updated: {rose.get_age()} days")
-    print()
- 
-    rose.set_height(-5)
-    rose.set_age(-10)
-    print()
- 
-    print("Current state: ", end="")
-    rose.show()
-    print()
+    print("Created: ", end="")
+    oak.show()
+    print("Created: ", end="")
+    cactus.show()
+    print("Created: ", end="")
+    sunflower.show()
