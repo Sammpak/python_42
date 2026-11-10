@@ -6,7 +6,7 @@
 #  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/11/09 16:51:56 by spaccaud        #+#    #+#               #
-#  Updated: 2026/11/10 15:21:35 by spaccaud        ###   ########.fr        #
+#  Updated: 2026/11/10 17:57:30 by spaccaud        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -109,11 +109,11 @@ class Seed(Flower):
         self._seeds = seeds
         self._nbr_seeds = nbr_seed
 
-    def show(self):
+    def show(self) -> None:
         super().show()
         print(f" Seeds: {self._seeds}")
 
-    def bloom(self):
+    def bloom(self) -> None:
         self._seeds = self._nbr_seeds
         super().bloom()
 
