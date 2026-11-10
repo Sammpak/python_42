@@ -208,3 +208,4 @@ if __name__ == "__main__":
     anonymous = Plant.anonymous()
     anonymous.show()
     print("[statistics for Anonymous]")
+    display_stats(anonymous)
