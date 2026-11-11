@@ -6,7 +6,7 @@
 #  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/11/09 10:34:42 by spaccaud        #+#    #+#               #
-#  Updated: 2026/11/11 12:11:21 by spaccaud        ###   ########.fr        #
+#  Updated: 2026/11/11 12:53:30 by spaccaud        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -24,7 +24,8 @@ def garden_operations(operation_number: int) -> None:
 
 
 def test_error_types() -> None:
-    for i in range(0, 5):
+    i: int = 0
+    while (i < 5):
         print(f"Testing operation {i}...")
         try:
             garden_operations(i)
@@ -36,6 +37,7 @@ def test_error_types() -> None:
             print(f"Caught FileNotFoundError: {e}")
         except TypeError as e:
             print(f"Caught TypeError: {e}")
+        i += 1
 
 
 if __name__ == "__main__":

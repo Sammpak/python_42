@@ -6,7 +6,7 @@
 #  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/11/09 09:59:03 by spaccaud        #+#    #+#               #
-#  Updated: 2026/11/11 12:13:48 by spaccaud        ###   ########.fr        #
+#  Updated: 2026/11/11 12:51:46 by spaccaud        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -16,7 +16,6 @@ def input_temperature(temp_str: str) -> int:
         raise ValueError(f"{result}°C is too hot for plants (max 40°C)")
     if (result < 0):
         raise ValueError(f"{result}°C is too cold for plants (min 0°C)")
-    print(f"Temperature is now {result}°C")
     return result
 
 
@@ -26,7 +25,8 @@ def test_temperature() -> None:
     for nbr in list_input:
         try:
             print(f"Input data is '{nbr}")
-            input_temperature(nbr)
+            result: int = input_temperature(nbr)    
+            print(f"Temperature is now {result}°C")
         except ValueError as e:
             print(f"Caught input_temperature err: {e}")
 
