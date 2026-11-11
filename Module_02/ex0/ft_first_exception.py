@@ -6,7 +6,7 @@
 #  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/11/09 09:59:03 by spaccaud        #+#    #+#               #
-#  Updated: 2026/11/11 11:42:33 by spaccaud        ###   ########.fr        #
+#  Updated: 2026/11/11 12:14:15 by spaccaud        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -20,17 +20,19 @@ def test_temperature() -> None:
         nbr_input: str = "25"
         print(f"Input data is '{nbr_input}'")
         temp: int = input_temperature(nbr_input)
-        print(f"Temperature is now {nbr_input}")
+        print(f"Temperature is now {temp}°C")
+    except ValueError as e:
+        print(f"err: {e}")
 
-        print("")
+    print("")
 
+    try:
         nbr_input = "abc"
         print(f"Input data is '{nbr_input}'")
         temp = input_temperature(nbr_input)
-        print(f"Temperature is now {temp}")
-
+        print(f"Temperature is now {temp}°C")
     except ValueError as e:
-        print(f"Caught input_temperature err: {e}")
+        print(f"Caught input_temperature error:: {e}")
 
 
 if __name__ == "__main__":

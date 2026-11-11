@@ -6,7 +6,7 @@
 #  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/11/09 10:34:42 by spaccaud        #+#    #+#               #
-#  Updated: 2026/11/11 11:39:22 by spaccaud        ###   ########.fr        #
+#  Updated: 2026/11/11 12:11:21 by spaccaud        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -20,26 +20,26 @@ def garden_operations(operation_number: int) -> None:
     elif (operation_number == 3):
         "123" + 123
     elif (operation_number == 4):
-        return
+        print("Operation completed successfully")
 
 
 def test_error_types() -> None:
     for i in range(0, 5):
-        print(f"Testing operation: {i}...")
+        print(f"Testing operation {i}...")
         try:
             garden_operations(i)
         except ValueError as e:
-            print(f"Caught ValueErro: {e}")
+            print(f"Caught ValueError: {e}")
         except ZeroDivisionError as e:
             print(f"Caught ZeroDivisionError: {e}")
         except FileNotFoundError as e:
-            print(f"Caught FileNotFoundErro: {e}")
+            print(f"Caught FileNotFoundError: {e}")
         except TypeError as e:
-            print(f"Caught TypeErro: {e}")
+            print(f"Caught TypeError: {e}")
 
 
 if __name__ == "__main__":
 
     print("=== Garden Error Types Demo ===")
     test_error_types()
-    print("All tests completed - program didnt't crash")
+    print("All error types tested successfully!")
