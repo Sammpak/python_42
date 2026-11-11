@@ -6,7 +6,7 @@
 #  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/11/05 11:56:55 by spaccaud        #+#    #+#               #
-#  Updated: 2026/11/10 15:17:11 by spaccaud        ###   ########.fr        #
+#  Updated: 2026/11/11 11:02:56 by spaccaud        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -33,7 +33,7 @@ if __name__ == "__main__":
     oak = Plant("Oak", 200.0, 365, 0.1)
     cactus = Plant("Cactus", 5.0, 90, 0.5)
     sunflower = Plant("Sunflower", 80.0, 45, 1.2)
- 
+
     print("=== Plant Factory Output ===")
     print("Created: ", end="")
     rose.show()
