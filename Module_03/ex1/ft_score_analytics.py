@@ -6,55 +6,43 @@
 #  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/11/06 13:48:02 by spaccaud        #+#    #+#               #
-#  Updated: 2026/11/06 15:43:35 by spaccaud        ###   ########.fr        #
+#  Updated: 2026/11/11 13:24:35 by spaccaud        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
 import sys
 
+
+class Score_error(Exception):
+    def __init__(self, message: str = "Unknown score error") -> None:
+        self.message = message
+        super().__init__(self.message)
+
+
+def get_valid_scores(args: list[str]) -> list[int]:
+    scores: list[int] = [0] * len(args)
+    i: int = 0
+    for arg in args:
+        try:
+            scores[i] = int(arg)
+            i += 1
+        except ValueError:
+            print(f"Invalid parameter: '{arg}'")
+    return scores[:i]
+
+
 if __name__ == "__main__":
-    print("=== PLayer score Analytics")
-    argv: list = sys.argv
-    argc: int = len(sys.argv)
-    is_correct: bool
-    valide_list = [None] * argc
-    i_list = 0
-    if (argc == 1):
-        print("No score provided. Usage:")
-        
+    print("=== Player Score Analytics ===")
+    scores: list[int] = get_valid_scores(sys.argv[1:])
+    if len(scores) == 0:
+        print("No scores provided. Usage: "
+              "python3 ft_score_analytics.py <score1> <score2> ...")
     else:
-        for i in range(1, argc):
-            is_correct = True
-            for j in range(0, len(argv[i])):
-                if argv[i][j] not in "0123456789":
-                    print(f"Invalide parameter {argv[i]}")
-                    is_correct = False
-                    break
-            if (is_correct):
-                valide_list[i_list] = argv[i]
-                i_list = i_list + 1
-
-        size_real_list = 0
-        for k in range(0, len(valide_list)):
-            if (valide_list[k] is not None):
-                size_real_list += 1
-        real_list_fr = [None] * size_real_list
-
-        for n in range(0, size_real_list):
-            real_list_fr[n] = atoi(valide_list[n])
-
-        if (size_real_list == 0):
-            print("No score provided")
-        else:
-            total_score = 0
-            for p in range(0, size_real_list):
-                total_score += real_list_fr[p]
-            average_score = total_score / size_real_list
-            print(f"Average score: {average_score}")
-            print(f"Total score {total_score}")
-            print(f"Scores processed: {real_list_fr}")
-            print(f"Total player: {size_real_list}")
-            print(f"Low score: {min(real_list_fr)}")
-            print(f"High score: {max(real_list_fr)}")
-            score_range = max(real_list_fr) - min(real_list_fr)
-            print(f"Score range: {score_range}")
+        total: int = sum(scores)
+        print(f"Scores processed: {scores}")
+        print(f"Total players: {len(scores)}")
+        print(f"Total score: {total}")
+        print(f"Average score: {total / len(scores)}")
+        print(f"High score: {max(scores)}")
+        print(f"Low score: {min(scores)}")
+        print(f"Score range: {max(scores) - min(scores)}")
