@@ -1,23 +1,13 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_achievement_tracker.py                          :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: spaccaud <spaccaud@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/11/13 13:14:54 by spaccaud          #+#    #+#              #
-#    Updated: 2026/11/13 15:42:12 by spaccaud         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 import sys
+
 
 class Dict_error(Exception):
     def __init__(self, message: str = "Unknown dict error") -> None:
         self.message = message
         super().__init__(self.message)
 
-def argv_to_dict(argv: list[str]) -> dict[str, str]:
+
+def argv_to_dict(argv: list[str]) -> dict[str, int]:
     inventory: dict[str, int] = {}
 
     for item in argv:
@@ -36,9 +26,9 @@ def argv_to_dict(argv: list[str]) -> dict[str, str]:
             if (item_name not in inventory):
                 if item_name == "" or item_nbr == "":
                     raise Dict_error(f" invalid parameter '{item_name}'")
-                else :
+                else:
                     inventory[item_name] = int(item_nbr)
-            else :
+            else:
                 raise Dict_error(f"Redundant item '{item_name}' - discarding")
         except Dict_error as e:
             print(f"Error: {e}")
@@ -48,27 +38,26 @@ def argv_to_dict(argv: list[str]) -> dict[str, str]:
             continue
     return inventory
 
+
 if __name__ == "__main__":
     print("=== Player Score Analytics ===")
     argv: list[str] = sys.argv
 
     dict_item: dict[str, int] = argv_to_dict(argv[1::])
-    if(len(dict_item) != 0):
+    if (len(dict_item) != 0):
 
-        print(f"=== Inventory System Analysis ===")
+        print("=== Inventory System Analysis ===")
         print(f"Got inventory : {dict_item}")
         list_item: list[str] = [item for item in dict_item]
         print(f"Item list : {list_item}")
 
         quantity_total: int = sum(dict_item.values())
-        print(f"Total quantity of the {len(list_item)} items: {quantity_total}")
+        print(f"Total quantity of the {len(list_item)} "
+              f"items: {quantity_total}")
 
         for item, nbr in dict_item.items():
             percent: float = (nbr / quantity_total) * 100
             print(f"Item {item} represents {round(percent, 1)}%")
-
-        #Item most abundant: potion with quantity 5
-        #Item least abundant: sword with quantity 1
 
         current_smaller: int = 0
         current_smaler_item: str = ""
@@ -86,7 +75,9 @@ if __name__ == "__main__":
             if (nbr > current_higher):
                 current_higher = nbr
                 current_higher_item = item
-        print(f"Item most abundant: {current_higher_item} with quantity {current_higher}")
-        print(f"Item least abundant: {current_smaler_item} with quantity {current_smaller}")
-    else :
+        print(f"Item most abundant: {current_higher_item} "
+              f"with quantity {current_higher}")
+        print(f"Item least abundant: {current_smaler_item} "
+              f"with quantity {current_smaller}")
+    else:
         print("No item in the inventory")
