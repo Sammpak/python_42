@@ -1,0 +1,22 @@
+from creature import Flameling, Pyrodon, AquaFactory, fight
+
+if __name__ == "__main__":
+    print("Testing factory")
+    flameling = Flameling("Flameling", "Fire")
+    flameling.describe()
+    flameling.attack()
+    pyrodon = Pyrodon("Pyrodon", "Fire/Flying")
+    pyrodon.describe()
+    pyrodon.attack()
+    print("")
+    print("Testing factory")
+    factory = AquaFactory()
+    aquabub = factory.create_base()
+    aquabub.describe()
+    aquabub.attack()
+    toragon = factory.create_evolved()
+    toragon.describe()
+    toragon.attack()
+    print("")
+    print("Testing battle")
+    fight(flameling, aquabub)

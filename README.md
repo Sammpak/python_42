@@ -6,4 +6,5 @@ Module_2 ✅ Validate
 Module_3 : Done not validated yet
 Module_4 : Done not validated yet
 Module_5 : Done not validated yet
-Module_6 : Currently doing
+Module_6 : Done not validated yet
+Module_7 : Currently doing
