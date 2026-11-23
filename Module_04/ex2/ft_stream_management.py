@@ -32,13 +32,17 @@ def modify_file(argv: list[str]) -> None:
                     line = line[:-1]
                 print(f"{line}#")
 
-        if (len(argv) == 2):
-            print(f"Saving data to '{argv[1]}'")
-            open_and_modify_file(argv[1], argv[0])
+        sys.stdout.write("Enter new file name (or empty): ")
+        sys.stdout.flush()
+        new_loc: str = sys.stdin.readline().rstrip("\n")
+
+        if (len(new_loc) != 0):
+            print(f"Saving data to '{new_loc}'")
+            open_and_modify_file(new_loc, argv[0])
         else:
             print("Not saving data")
     except Exception as e:
-        print(f"[STDERR] Error opening file '{argv[0]}': {e}")
+        print(f"[STDERR] Error opening file '{argv[0]}': {e}", file=sys.stdout)
         print("Data not saved.")
 
 
@@ -51,7 +55,8 @@ def opening_file(file_name: str) -> bool:
         print("")
         return True
     except Exception as e:
-        print(f"[STDERR] Error opening file '{file_name}': {e}")
+        print(f"[STDERR] Error opening file '{file_name}': {e}",
+              file=sys.stdout)
         return False
 
 
