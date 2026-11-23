@@ -6,7 +6,7 @@
 #  By: spaccaud <spaccaud@student.42.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/11/11 14:06:56 by spaccaud        #+#    #+#               #
-#  Updated: 2026/11/16 11:08:23 by spaccaud        ###   ########.fr        #
+#  Updated: 2026/11/23 10:47:21 by spaccaud        ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -27,9 +27,10 @@ def is_valid_format_float(input: str) -> tuple[float, float, float]:
     is_small_digit: bool = False
     decimals: int = 0
     digits: int = 0
-
+    current_word: str = ""
     for c in input:
         if c == ',':
+            current_word = ""
             i += 1
             if i > 2:
                 raise Coordinate_error("Invalid syntax")
@@ -38,10 +39,13 @@ def is_valid_format_float(input: str) -> tuple[float, float, float]:
             decimals = 0
             digits = 0
         elif c == '-':
+            current_word = current_word + c
             is_negative = True
         elif c == '.':
+            current_word = current_word + c
             is_small_digit = True
         elif c in "0123456789":
+            current_word = current_word + c
             if is_small_digit:
                 decimals += 1
             digits = digits * 10 + int(c)
@@ -50,9 +54,19 @@ def is_valid_format_float(input: str) -> tuple[float, float, float]:
                 coord[i] = -value
             else:
                 coord[i] = value
+            current_word = ""
+        elif c == " ":
+            current_word = current_word + c
         else:
-            raise Coordinate_error(f"Error on parameter '{c}': could not "
-                                   f"convert string to float: '{c}'")
+            param: str = ""
+            n: int = 0
+            for c in input:
+                if c == ",":
+                    n += 1
+                elif n == i:
+                    param = param + c
+            raise Coordinate_error(f"Error on parameter '{param}': could not "
+                                   f"convert string to float: '{param}'")
 
     if i != 2:
         raise Coordinate_error("Invalid syntax")

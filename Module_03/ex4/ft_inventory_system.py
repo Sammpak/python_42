@@ -79,5 +79,8 @@ if __name__ == "__main__":
               f"with quantity {current_higher}")
         print(f"Item least abundant: {current_smaler_item} "
               f"with quantity {current_smaller}")
+
+        dict_item["magcic_item"] = 1
+        print(f"Updated inventory : {dict_item}")
     else:
         print("No item in the inventory")
