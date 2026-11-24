@@ -16,7 +16,8 @@ def opening_file(file_name: str) -> None:
         print(f"File '{file_name}' closed.")
     except Exception as e:
         print(f"Error opening file '{file_name}': {e}")
-        f.close()
+	if f is not None:
+        	f.close()
 
 
 if __name__ == "__main__":
