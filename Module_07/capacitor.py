@@ -1,4 +1,4 @@
-from creature import *
+from ex1 import HealingCreatureFactory, TransformCreatureFactory
 
 if __name__ == "__main__":
     print("Testing Creature with healing capability")
@@ -16,10 +16,18 @@ if __name__ == "__main__":
     print(" ")
 
     print("Testing Creature with transform capability")
+    print(" base :")
     factory = TransformCreatureFactory()
     shiftling = factory.create_base()
     shiftling.describe()
     shiftling.attack()
-
-    
-
+    shiftling.transform()
+    shiftling.attack()
+    shiftling.revert()
+    print(" evolved:")
+    morphagon = factory.create_evolved()
+    morphagon.describe()
+    morphagon.attack()
+    morphagon.transform()
+    morphagon.attack()
+    morphagon.revert()

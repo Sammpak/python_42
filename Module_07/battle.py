@@ -1,0 +1,23 @@
+from ex0 import FlameFactory, AquaFactory, fight
+
+if __name__ == "__main__":
+    print("Testing Flame factory")
+    flame_factory = FlameFactory()
+    flameling = flame_factory.create_base()
+    flameling.describe()
+    flameling.attack()
+    pyrodon = flame_factory.create_evolved()
+    pyrodon.describe()
+    pyrodon.attack()
+    print()
+    print("Testing Aqua factory")
+    aqua_factory = AquaFactory()
+    aquabub = aqua_factory.create_base()
+    aquabub.describe()
+    aquabub.attack()
+    torragon = aqua_factory.create_evolved()
+    torragon.describe()
+    torragon.attack()
+    print()
+    print("Testing battle")
+    fight(flameling, aquabub)
