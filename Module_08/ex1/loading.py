@@ -52,7 +52,10 @@ def do_matplot(x: int, y: int) -> None:
     plt.xlabel('X')
     plt.ylabel('y')
     plt.scatter(x, y)
-    plt.show()
+    print("Generating visualization...")
+    print("Analysis complete!")
+    print("Results saved to: matrix_analysis.png")
+    plt.savefig('matrix_analysis.png')
 
 
 if __name__ == "__main__":
@@ -60,9 +63,12 @@ if __name__ == "__main__":
     if (check_dependecie()):
         import_module()
         print()
-        nbr: tuple[int, int] = do_numpy(200, [2, 1])
+        print("Analyzing Matrix data...")
+        print("Processing 1000 data points...")
+        nbr: tuple[int, int] = do_numpy(1000, [2, 1])
         print()
         do_pandas(nbr[0], nbr[1])
+        print("Analysis complete!")
         print()
         do_matplot(nbr[0], nbr[1])
     else:
