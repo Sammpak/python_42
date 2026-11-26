@@ -51,16 +51,20 @@ class SpaceMission(BaseModel):
 
     @model_validator(mode="after")
     def check_commander(self) -> Self:
-        if not any(c.rank in (Rank.COMMANDER, Rank.CAPTAIN) for c in self.crew):
-            raise ValueError("Mission requires at least one Commander or Captain")
+        if not any(c.rank in (Rank.COMMANDER, Rank.CAPTAIN)
+                   for c in self.crew):
+            raise ValueError("Mission requires at least "
+                             "one Commander or Captain")
         return self
 
     @model_validator(mode="after")
     def check_long_mission(self) -> Self:
         if self.duration_days > 365:
-            experienced_count = sum(1 for c in self.crew if c.years_experience > 5)
+            experienced_count = sum(1 for c in self.crew
+                                    if c.years_experience > 5)
             if (experienced_count / len(self.crew)) < 0.5:
-                raise ValueError("Long missions (>365 days) require at least 50% experienced crew (>5 yrs)")
+                raise ValueError("Long missions (>365 days) require at "
+                                 "least 50% experienced crew (>5 yrs)")
         return self
 
     @model_validator(mode="after")
@@ -127,7 +131,7 @@ if __name__ == "__main__":
             budget_millions=2500,
             launch_date=datetime.now(),
             mission_status="GOOD",
-            crew=[alice, jhon, sarah]
+            crew=[alice, john, sarah]
         )
     except ValidationError as e:
         print(e.errors()[0]["msg"])
