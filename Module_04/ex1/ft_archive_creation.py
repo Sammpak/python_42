@@ -31,8 +31,11 @@ def modify_file(file_name: str) -> None:
                 if line[-1] == "\n":
                     line = line[:-1]
                 print(f"{line}#")
-
-        new_loc: str = input("Enter new file name (or empty): ")
+        try:
+            new_loc: str = input("Enter new file name (or empty): ")
+        except (KeyboardInterrupt, EOFError):
+            print("\nInterrupted, not saving data")
+            return
         if new_loc == "":
             print("Not saving data")
         else:

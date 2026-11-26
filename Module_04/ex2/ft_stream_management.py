@@ -31,11 +31,13 @@ def modify_file(argv: list[str]) -> None:
                 if line[-1] == "\n":
                     line = line[:-1]
                 print(f"{line}#")
-
-        sys.stdout.write("Enter new file name (or empty): ")
-        sys.stdout.flush()
-        new_loc: str = sys.stdin.readline().rstrip("\n")
-
+        try:
+            sys.stdout.write("Enter new file name (or empty): ")
+            sys.stdout.flush()
+            new_loc: str = sys.stdin.readline().rstrip("\n")
+        except (KeyboardInterrupt, EOFError):
+            print("\nInterrupted, not saving data")
+            return
         if (len(new_loc) != 0):
             print(f"Saving data to '{new_loc}'")
             open_and_modify_file(new_loc, argv[0])
